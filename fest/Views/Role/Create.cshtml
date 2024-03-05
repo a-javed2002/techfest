@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutUser";
+}
+@model fest.Models.Role
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input asp-for="RoleName" />
+    <button type="submit">Submit</button>
+</form>
+
+@section Scripts {
+    <script>
+        // Check if ErrorMessage is set and log it to the console
+        if ('@ViewBag.ErrorMessage' !== '') {
+            console.error('@ViewBag.ErrorMessage');
+        }
+    </script>
+}

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutUser";
+}
+@model fest.Models.Product
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ProductId" />
+    <div asp-validation-summary="ModelOnly"></div>
+    <input asp-for="ProductName" />
+    <input asp-for="Price" />
+    <input type="file" class="form-control" name="file"  asp-for="ProductImage" />
+    <select asp-for="CategoryId" asp-items="ViewBag.catid"></select>
+    <button type="submit">Submit</button>
+</form>
+

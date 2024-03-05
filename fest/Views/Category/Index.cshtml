@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutUser";
+}
+@model IEnumerable<fest.Models.Category>
+
+<a asp-action="create"><h1>Edit</h1></a>
+
+    <table class="table">
+        <tr>
+            <th>
+                #
+            </th>
+
+        <th>
+            Name
+ 
+        </th>
+
+        <th>
+            Edit
+        </th>
+
+        <th>
+            Delete
+        </th>
+    </tr>
+    @foreach(var x in Model){
+    <tr>
+        <td>
+            @x.CategoryId
+        </td>
+
+            <td>
+                @x.CategoryName
+            </td>
+
+
+            <td>
+             <a asp-action="edit" asp-route-id="@x.CategoryId">Edit</a>
+            </td>
+
+            <td>
+                <a asp-action="delete" asp-route-id="@x.CategoryId">Edit</a>
+            </td>
+    </tr>
+    }
+    </table>

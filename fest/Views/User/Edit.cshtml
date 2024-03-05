@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutUser";
+}
+
+@model fest.Models.User
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly"></div>
+    <input asp-for="UserName" />
+    <span asp-validation-for="UserName"></span>
+    <input asp-for="Email" />
+    <input asp-for="Images" />
+    <input asp-for="Passwords" />
+    <select asp-for="RoleIdfk" asp-items="ViewBag.roleid"></select>
+    <button type="submit">Submit</button>
+</form>

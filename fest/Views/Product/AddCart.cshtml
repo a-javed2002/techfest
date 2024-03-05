@@ -1,0 +1,67 @@
+﻿
+@{
+    Layout = "_LayoutUser";
+    ViewData["Title"] = "Books";
+}
+
+<section class="section-sm " style="margin-top:100px!important">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <!-- course thumb -->
+                <img src="~/Userpanel/images/courses/course-single.jpg" class="img-fluid w-100">
+            </div>
+        </div>
+
+        @{
+            var total = 0;
+        }
+        <Table class="table">
+
+            <tr>
+                <th>Id</th>
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>total</th>
+                <th>Minus</th>
+                <th>Plus</th>
+
+            </tr>
+
+
+            @if (ViewBag.mycart != null)
+            {
+                @foreach (Cart item in ViewBag.mycart)
+                {
+                    var q = item.Price * item.Quantity;
+                    <tr>
+                        <td><img src="~/@Url.Content(item.ProductImage)"  height="100"/></td>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@q</td>
+                        <td> <a asp-action="minus" asp-route-id="@item.ProductId"> - </a></td>
+                        <td> <a asp-action="plus" asp-route-id="@item.ProductId"> + </a></td>
+                        <td> <a asp-action="Remove" asp-route-id="@item.ProductId"> Remove </a></td>
+                        @{
+                            total += q ?? 0; // If q is null, use 0
+                        }
+
+                    </tr>
+                }
+                <tr>
+                    <td> Total amount is @total</td>
+                <td> <a asp-action="checkout" asp-route-total="@total"> Checkout </a></td>
+                <td> <a asp-action="RemoveAll" >Remove </a></td>
+
+            </tr>
+            }else{
+            <tr>
+                <td><h1>Cart Is Empty!</h1></td>
+            </tr>
+
+            }
+
+        </Table>
+     

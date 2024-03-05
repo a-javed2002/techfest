@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "_LayoutUser";
+}
+
+<section class="section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <!-- course thumb -->
+                <img src="images/courses/course-single.jpg" class="img-fluid w-100">
+            </div>
+        </div>
+
+
+
+        <form asp-action="checkout">
+
+            <label>Address</label>
+            <input class="form-control" type="text" name="add"/>
+            <label>Message</label>
+
+            <input class="form-control" type="text" name="msg" />
+            <label>Contact</label>
+
+            <input class="form-control" type="text" name="con" />
+            <input type="submit" value="Conform"/>
+        </form>
